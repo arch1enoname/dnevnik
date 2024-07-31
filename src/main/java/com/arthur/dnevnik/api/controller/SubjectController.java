@@ -28,5 +28,11 @@ public class SubjectController {
         return new ResponseEntity<>(subjectService.getSubjectById(subjectId), HttpStatus.OK);
     }
 
+    @DeleteMapping("/{subjectId}")
+    public ResponseEntity<Void> deleteSubject(@PathVariable Long subjectId) {
+        subjectService.deleteSubject(subjectId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 
 }

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.Date;
+
 @Data
 @Entity
 @AllArgsConstructor
@@ -23,5 +25,6 @@ public class Grade {
     User student;
     @ManyToOne
     Subject subject;
+    Date dateOfRate;
 
 }

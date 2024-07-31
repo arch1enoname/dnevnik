@@ -44,4 +44,9 @@ public class GradeController {
         return new ResponseEntity<>(gradeService.getAverageGradeByStudentIdAndSubjectId(studentId, subjectId), HttpStatus.OK);
     }
 
+    @GetMapping("/getAverageGradeByClassroomAndBySubject/{classroomId}/{subjectId}")
+    public ResponseEntity<Double> getAverageGradeByClassroomAndBySubject(@PathVariable Long classroomId, @PathVariable Long subjectId) {
+        return new ResponseEntity<>(gradeService.getAverageGradeByClassroomIdAndSubjectId(classroomId, subjectId), HttpStatus.OK);
+    }
+
 }

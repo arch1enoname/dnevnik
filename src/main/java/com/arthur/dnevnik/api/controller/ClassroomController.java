@@ -58,4 +58,10 @@ public class ClassroomController {
     public ResponseEntity<List<SubjectDto>> getSubjectsByClassroom(@PathVariable Long classroomId) {
         return new ResponseEntity<>(classroomService.getSubjectsFromClassroom(classroomId), HttpStatus.OK);
     }
+
+    @DeleteMapping("/{classroomId}/{subjectId}")
+    public ResponseEntity<Classroom> deleteSubjectFromClassroom(@PathVariable Long classroomId, @PathVariable Long subjectId) {
+        classroomService.deleteSubjectFromClassroom(classroomId, subjectId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

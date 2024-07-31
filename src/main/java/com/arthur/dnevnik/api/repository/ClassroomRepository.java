@@ -1,6 +1,7 @@
 package com.arthur.dnevnik.api.repository;
 
 import com.arthur.dnevnik.api.Entity.Classroom;
+import com.arthur.dnevnik.api.Entity.Subject;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

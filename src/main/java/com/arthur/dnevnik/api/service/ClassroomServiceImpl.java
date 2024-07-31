@@ -127,6 +127,9 @@ public class ClassroomServiceImpl implements ClassroomService {
         Classroom classroom = getClassroomById(classroomId);
         Optional<Subject> subject = subjectRepository.findById(subjectId);
         if (subject.isPresent()) {
+            if(classroom.getSubjects().contains(subject.get())) {
+                throw new RuntimeException("Subject already exists");
+            }
             classroom.getSubjects().add(subject.get());
             subject.get().getClassrooms().add(classroom);
             subjectRepository.save(subject.get());
@@ -145,6 +148,16 @@ public class ClassroomServiceImpl implements ClassroomService {
             SubjectDto subjectDto = new SubjectDto(subject.getName());
             subjectDtos.add(subjectDto);
         }
-        return subjectDtos;
+        return subjectDtos.stream().sorted((s1,s2) -> s1.getName().compareTo(s2.getName())).collect(Collectors.toList());
+    }
+
+    public void deleteSubjectFromClassroom(Long classroomId, Long subjectId) {
+        Classroom classroom = getClassroomById(classroomId);
+        Optional<Subject> subject = subjectRepository.findById(subjectId);
+        if (subject.isPresent()) {
+            System.out.println(classroom.getSubjects().contains(subject.get()));
+            classroom.getSubjects().remove(subject.get());
+            classroomRepository.save(classroom);
+        }
     }
 }

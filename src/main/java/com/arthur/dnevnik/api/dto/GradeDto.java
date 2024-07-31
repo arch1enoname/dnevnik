@@ -3,6 +3,8 @@ package com.arthur.dnevnik.api.dto;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,4 +16,5 @@ public class GradeDto {
     Long teacherId;
     Long studentId;
     Long subjectId;
+    Date dateOfRate;
 }
